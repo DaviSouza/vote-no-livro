@@ -1,0 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package voto.dao.imp;
+
+import voto.dao.VotliDao;
+import voto.model.Votli;
+
+/**
+ *
+ * @author Davi Souza
+ */
+public class VotliDaoImp extends GenericoDaoImp<Votli, Integer> implements VotliDao {
+    
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" extends="struts-default" >
+    
+        <action name="welcome" method="welcome" class="voto.action.LivroAction">
+            <interceptor-ref name="i18n"/>
+            <interceptor-ref name="basicStack"/>
+            <result name="success" >/pages/welcome.jsp</result>
+        </action>
+
+        <action name="voting" method="welcome" class="voto.action.VotoAction">
+            <result name="success">/pages/votocao.jsp</result>
+        </action>
+        
+        <action name="ranking" method="maisVotados" class="voto.action.VotoAction">
+            <result name="success">/pages/livros_votados.jsp</result>
+        </action>
+        
+        <action name="chosenBook" method="voted" class="voto.action.VotoAction">
+            <result name="success">/pages/perguntar_votacao.jsp</result>
+        </action>
+
+        <action name="finishVoting" method="welcome" class="voto.action.UsuarAction">
+            <result name="success">/pages/form_usuar.jsp</result>
+        </action>
+
+        <action name="continueVoting" method="welcome" class="voto.action.VotoAction">
+            <result name="success">/pages/votocao.jsp</result>
+        </action>
+        
+        <action name="cadUsuars" method="welcome" class="voto.action.UsuarAction">
+            <result name="success">/pages/form_usuar.jsp</result>
+        </action>
+        
+        <action name="listUsuars" method="list" class="voto.action.UsuarAction">
+            <result name="success">/pages/list_usuars.jsp</result>
+        </action>
+        
+        <action name="updateOrSaveUsuar" method="updateOrSave" class="voto.action.UsuarAction">
+            <result name="input">/pages/form_usuar.jsp</result>
+            <result name="success">/pages/sucesso.jsp</result>
+            <result name="fieldError">/pages/form_usuar.jsp</result>            
+            <result name="error">/pages/erro.jsp</result>
+        </action>
+        
+        <action name="cadLivros" method="welcome" class="voto.action.LivroAction">
+            <result name="success">/pages/form_livro.jsp</result>
+        </action>
+        
+        <action name="selectLivro" method="welcome" class="voto.action.LivroAction">
+            <result name="success">/pages/form_livro.jsp</result>
+        </action>
+        
+        <action name="listLivros" method="list" class="voto.action.LivroAction">
+            <result name="success">/pages/list_livros.jsp</result>
+        </action>
+        
+        <action name="updateOrSaveLivro" method="updateOrSave" class="voto.action.LivroAction">
+            <result name="input">/pages/form_livro.jsp</result>
+            <result name="fieldError">/pages/form_livro.jsp</result>
+            <result name="success">/pages/sucesso.jsp</result>
+            <result name="error">/pages/erro.jsp</result>
+        </action>
+        
+        <action name="deletaLivro" method="deletaLivro" class="voto.action.LivroAction">
+            <result name="success">/pages/list_livros.jsp</result>
+            <result name="error">/pages/erro.jsp</result>
+        </action>
+        
+        <action name="deletaUsuar" method="deletaUsuar" class="voto.action.UsuarAction">
+            <result name="success">/pages/list_usuars.jsp</result>
+            <result name="error">/pages/erro.jsp</result>
+        </action>
+        
+    </package>
+</struts>
