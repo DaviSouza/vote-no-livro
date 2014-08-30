@@ -7,9 +7,7 @@ package voto.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +16,6 @@ import org.apache.struts2.ServletActionContext;
 import org.hibernate.validator.Valid;
 import voto.dao.LivroDao;
 import voto.dao.imp.LivroDaoImp;
-import voto.dao.imp.VotadosDaoImp;
 import voto.dao.imp.VotliDaoImp;
 import voto.model.Livro;
 import voto.model.Votli;
@@ -41,7 +38,6 @@ public class VotoAction extends ActionSupport {
     @Valid
     private Livro livro2;
 
-    //fazer a lista de votados
     private void removeDaLivroList(Integer cdLivro) {
         livroList = (List<Livro>) getRequest().getSession().getAttribute("livroList");
         Object obj = getRequest().getSession().getAttribute("votados");
@@ -60,20 +56,15 @@ public class VotoAction extends ActionSupport {
     }
 
     public String maisVotados() throws Exception {
-        Integer total = new VotliDaoImp().totalRegistros(Votli.class);
-        String sql = "select distinct livro.cd_livro, livro.nm_livro as nome, livro.nl_livro as url,"
-                + "(SELECT COUNT(e.cd_livro) FROM votli e where e.cd_livro = livro.cd_livro) as votos "
-                + "from livro, votli where votli.cd_livro = livro.cd_livro";
-        Connection con = new VotadosDaoImp().getConnection(sql);
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
+        VotliDaoImp votliDaoImp = new VotliDaoImp();
+        Integer total = votliDaoImp.totalRegistros(Votli.class);
+        ResultSet rs = votliDaoImp.getMoreVoted();
         Double percent = 0d;
         while (rs.next()) {
             percent = (rs.getInt("votos") * 100d) / total.doubleValue();
             rankingListVotados.add(new Votados(rs.getString("nome"), rs.getString("url"), percent.intValue()));
         }
-        stmt.close();
-        con.close();
+        votliDaoImp.closeConnections();
         return SUCCESS;
     }
 

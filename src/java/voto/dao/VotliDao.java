@@ -5,6 +5,8 @@
  */
 package voto.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import voto.model.Votli;
 
 /**
@@ -13,4 +15,7 @@ import voto.model.Votli;
  */
 public interface VotliDao extends GenericoDao<Votli, Integer> {
 
+    public ResultSet getMoreVoted() throws SQLException;
+
+    public void closeConnections() throws SQLException;
 }

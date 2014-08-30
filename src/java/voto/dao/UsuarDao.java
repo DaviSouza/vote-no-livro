@@ -5,6 +5,7 @@
  */
 package voto.dao;
 
+import java.sql.SQLException;
 import voto.model.Usuar;
 
 /**
@@ -13,4 +14,5 @@ import voto.model.Usuar;
  */
 public interface UsuarDao extends GenericoDao<Usuar, Integer> {
 
+    public void deleteInVotli(Integer cd_usuar) throws SQLException;
 }

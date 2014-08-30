@@ -7,9 +7,7 @@ package voto.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -54,11 +52,11 @@ public class UsuarAction extends ActionSupport {
         if (usuar != null) {
             boolean flagError = false;
             if (usuar.getNmUsuar().length() == 0) {
-                addFieldError("nameUser", "User Name is required");
+                addFieldError("nameUser", getText("label.name.required"));
                 flagError = true;
             }
             if (usuar.getEmUsuar().length() == 0) {
-                addFieldError("emailUser", "Email is required");
+                addFieldError("emailUser", getText("label.email.required"));
                 flagError = true;
             }
             if (flagError) {
@@ -91,12 +89,7 @@ public class UsuarAction extends ActionSupport {
     }
 
     private void deleteInVotli() throws SQLException {
-        String sql = "delete FROM votli where cd_livro = " + usuar.getCdUsuar();
-        Connection con = new UsuarDaoImp().getConnection(sql);
-        Statement stmt = con.createStatement();
-        stmt.execute(sql);
-        stmt.close();
-        con.close();
+        new UsuarDaoImp().deleteInVotli(usuar.getCdUsuar());
     }
 
     public void updateOrSaveVotos() {

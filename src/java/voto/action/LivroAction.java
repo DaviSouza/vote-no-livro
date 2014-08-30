@@ -55,16 +55,16 @@ public class LivroAction extends ActionSupport {
     public String updateOrSave() {
         boolean flagError = false;
         if (livro.getNmLivro().length() == 0) {
-            addFieldError("nameBooke", "Nome obrigatório.");
+            addFieldError("nameBooke", getText("label.name.required"));
             flagError = true;
         }
         if (livro.getTxLivro().length() == 0) {
-            addFieldError("textBook", "Descrição é obrigatória.");
+            addFieldError("textBook", getText("label.description.required"));
             flagError = true;
         }
 
         if (this.livroImageFileName == null || this.livroImageFileName.length() == 0) {
-            addFieldError("imagesBook", "Imagem é obrigatória.");
+            addFieldError("imagesBook", getText("label.image.required"));
             flagError = true;
         }
 

@@ -212,8 +212,7 @@ public class GenericoDaoImp<T, ID extends Serializable> implements GenericoDao<T
 
     @Override
     public Connection getConnection(String sql) {
-        String url = "jdbc:mysql://127.7.126.130:3306/voting";
-//        String url = "jdbc:mysql://localhost:3306/desafio_db";
+        String url = "jdbc:mysql://localhost:3306/desafio_db";
         Connection con;
 
         try {
@@ -223,8 +222,7 @@ public class GenericoDaoImp<T, ID extends Serializable> implements GenericoDao<T
             System.err.println(e.getMessage());
         }
         try {
-            con = DriverManager.getConnection(url,"admin71BLf46", "4laQVWSJ48eY");
-//            con = DriverManager.getConnection(url,"root", "1234");
+            con = DriverManager.getConnection(url,"root", "1234");
             return con;
         } catch (SQLException ex) {
             System.err.print("SQLException: ");
