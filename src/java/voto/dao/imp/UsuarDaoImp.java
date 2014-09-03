@@ -19,10 +19,10 @@ public class UsuarDaoImp extends GenericoDaoImp<Usuar, Integer> implements Usuar
 
     @Override
     public void deleteInVotli(Integer cd_usuar) throws SQLException {
-        String sql = "delete FROM votli where cd_livro = " + cd_usuar;
+        String sql = "delete FROM votli where cd_usuar = " + cd_usuar;
         Connection con = getConnection(sql);
         Statement stmt = con.createStatement();
-        stmt.execute(sql);
+        stmt.executeUpdate(sql);
         stmt.close();
         con.close();
     }

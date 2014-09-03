@@ -13,19 +13,6 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#btCancel").click(function() {
-//                    var IE = (navigator.userAgent.indexOf('MSIE') != -1);
-//                    if ($.browser.msie) {
-//                        if (parseInt($.browser.version) == 8) {
-//                            document.getElementById('header').firstChild.innerText = gup('chartTitle');
-//                            document.getElementById('footer').firstChild.innerText = gup('axesLeftTitleText');
-//                        } else if (parseInt($.browser.version) > 8) {
-//                            document.getElementById('header').firstElementChild.textContent = gup('chartTitle');
-//                            document.getElementById('footer').firstElementChild.textContent = gup('axesLeftTitleText');
-//                        }
-//                    } else {
-//                        document.getElementById('header').firstElementChild.textContent = gup('chartTitle');
-//                        document.getElementById('footer').firstElementChild.textContent = gup('axesLeftTitleText');
-//                    }
                     document.getElementById('inputTexto').value = "";
                     document.getElementById('inputNome').value = "";
                 });

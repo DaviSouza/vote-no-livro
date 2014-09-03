@@ -47,7 +47,7 @@ public class LivroAction extends ActionSupport {
         if (paramCdUsuar != null) {
             Integer cdLivro = new Integer(request.getParameter("cdLivro"));
             livro = livroDao.getById(Livro.class, cdLivro);
-            livro.setUrlImage("http://voting-dsouza7.rhcloud.com/img/"+livro.getNlLivro());
+            livro.setUrlImage("/img/"+livro.getNlLivro());
 
         }
     }
@@ -119,7 +119,7 @@ public class LivroAction extends ActionSupport {
 
     public void criaArquivo() throws Exception {//String fileName
 
-        String IMAGEM = "/var/lib/openshift/53c867224382ecd31b000473/app-root/runtime/dependencies/jbossews/webapps/img/";//System.getenv("OPENSHIFT_DATA_DIR")+ "/img/";//context.getRealPath("/") + "\\img\\";
+        String IMAGEM = context.getRealPath("/") + "\\img\\";
         try {
             try {
                 File fileToCreate = new File(IMAGEM, this.livroImageFileName);

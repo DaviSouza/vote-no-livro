@@ -44,8 +44,8 @@ public class Usuar implements Serializable {
     @Basic(optional = false)
     @Column(name = "em_usuar")
     private String emUsuar;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuar")
-    private Collection<Votli> votliCollection;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuar")
+//    private Collection<Votli> votliCollection;
 
     public Usuar() {
     }
@@ -84,14 +84,14 @@ public class Usuar implements Serializable {
         this.emUsuar = emUsuar;
     }
 
-    @XmlTransient
-    public Collection<Votli> getVotliCollection() {
-        return votliCollection;
-    }
-
-    public void setVotliCollection(Collection<Votli> votliCollection) {
-        this.votliCollection = votliCollection;
-    }
+//    @XmlTransient
+//    public Collection<Votli> getVotliCollection() {
+//        return votliCollection;
+//    }
+//
+//    public void setVotliCollection(Collection<Votli> votliCollection) {
+//        this.votliCollection = votliCollection;
+//    }
 
     @Override
     public int hashCode() {

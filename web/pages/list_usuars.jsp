@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -8,41 +10,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <table class="table table-striped table-hover ">
-            <thead>
-                <tr class="active">
-                    <th> 
-                        <a href="<s:url action="cadUsuars"/>"> 
-                            <img src="<s:url value="/img/add.png"/>"/>
-                        </a>
-                    </th>
-                    <th><s:text name="label.name"/></th>
-                    <th><s:text name="label.consult"/></th>
-                    <th><s:text name="label.delete"/></th>
-                </tr>
-            </thead>
-            <tbody>
-                <s:iterator value="usuarList">
-                    <tr>
-                        <td><s:text name="%{cdUsuar}" /></td>
-                        <td><s:text name="%{nmUsuar}" /></td>
-                        <td>
-                            <a href="<s:url action="cadUsuars">
-                                   <s:param name="cdUsuar" value="%{cdUsuar}" >    
-                                   </s:param></s:url>">
-                                <img src="<s:url value="/img/lupa.png"/>"/>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="<s:url action="deletaUsuar">
-                                   <s:param name="cdUsuar" value="%{cdUsuar}" >    
-                                   </s:param></s:url>">
-                                <img src="<s:url value="/img/delete.png"/>"/>
-                            </a>
-                        </td>
-                    </tr>
-                </s:iterator>
-        </table> 
+
+        <fmt:setBundle basename="bundle"/>
+        <display:table id="table" name="usuarList" pagesize="5" class="table table-striped table-hover " requestURI="listUsuars">
+            <display:column property="cdUsuar" titleKey="url.image.user.add" headerClass="active" />
+            <display:column property="nmUsuar" titleKey="label.name" headerClass="active" />        
+            <display:column titleKey="label.consult" headerClass="active">
+                <a href="<s:url action="cadUsuars">
+                       <s:param name="cdUsuar" value="%{cdUsuar}" >    
+                       </s:param></s:url>">
+                    <img src="<s:url value="/img/lupa.png"/>"/>
+                </a>
+            </display:column>
+            <display:column  titleKey="label.delete" headerClass="active">
+                <a href="<s:url action="deletaUsuar">
+                       <s:param name="cdUsuar" value="%{#attr.table.cdUsuar}" >    
+                       </s:param></s:url>">
+                    <img src="<s:url value="/img/delete.png"/>"/>
+                </a>
+            </display:column>
+        </display:table>
 
     </body>
 </html>

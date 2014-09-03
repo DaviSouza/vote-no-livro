@@ -20,7 +20,7 @@
                             <s:param name="cdLivro" value="livro1.cdLivro" />
                         </s:url> 
                         <s:a href="%{choose1}" >
-                            <img src="http://voting-dsouza7.rhcloud.com/img/<s:property value="livro1.nlLivro" />" width="200px" height="200px">
+                            <img src="/img/<s:property value="livro1.nlLivro" />" width="200px" height="200px">
                         </s:a>
                     </div>  
                     <div class="row">  
@@ -41,7 +41,7 @@
                         </s:url> 
                         <div style="text-align: center;">
                             <s:a href="%{choose2}" >
-                                <img src="http://voting-dsouza7.rhcloud.com/img/<s:property value="livro2.nlLivro" />" width="200px" height="200px">
+                                <img src="/img/<s:property value="livro2.nlLivro" />" width="200px" height="200px">
                             </s:a>
                         </div>
                     </div>  
